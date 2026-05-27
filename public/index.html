@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Git Archaeologist</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="query-panel" aria-label="Repository analysis form">
+        <div class="brand">
+          <div class="mark">GA</div>
+          <div>
+            <h1>Git Archaeologist</h1>
+            <p>Ask why code exists, not just what it does.</p>
+          </div>
+        </div>
+
+        <form id="query-form" class="query-form">
+          <label>
+            GitHub repository
+            <input id="repo-url" name="repoUrl" placeholder="https://github.com/owner/repo" autocomplete="off" required />
+          </label>
+          <label>
+            Function, class, or symbol
+            <input id="symbol" name="symbol" placeholder="calculate_discount" autocomplete="off" required />
+          </label>
+          <label>
+            Question
+            <textarea id="question" name="question" rows="3">Why does this code exist?</textarea>
+          </label>
+          <div class="actions">
+            <button class="primary" type="submit">Analyze history</button>
+            <button class="secondary" type="button" id="load-demo">Load demo</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="workspace" aria-live="polite">
+        <div id="status" class="status">Paste a public GitHub repo and a symbol to begin.</div>
+
+        <section class="summary-band">
+          <div>
+            <span class="eyebrow">AI Summary</span>
+            <p id="summary">The answer will appear here after analysis.</p>
+          </div>
+          <div class="risk-meter">
+            <span id="risk-level">Risk</span>
+            <strong id="risk-score">--</strong>
+          </div>
+        </section>
+
+        <div class="grid two">
+          <article class="panel">
+            <h2>History</h2>
+            <div id="created" class="created empty">No creation commit loaded.</div>
+            <div id="timeline" class="timeline"></div>
+          </article>
+
+          <article class="panel">
+            <h2>Who Knows This Code?</h2>
+            <div id="contributors" class="contributors empty">No contributors loaded.</div>
+          </article>
+        </div>
+
+        <div class="grid two">
+          <article class="panel">
+            <h2>Related Discussions</h2>
+            <div id="discussions" class="discussion-list empty">No issue or PR references found yet.</div>
+          </article>
+
+          <article class="panel">
+            <h2>Risk Detection</h2>
+            <div id="risk-reasons" class="risk-list empty">Risk signals will appear here.</div>
+          </article>
+        </div>
+
+        <article class="panel map-panel">
+          <h2>Knowledge Map</h2>
+          <div id="map" class="map"></div>
+        </article>
+
+        <article class="panel">
+          <h2>Evidence</h2>
+          <div id="matches" class="matches empty">No source matches loaded.</div>
+        </article>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

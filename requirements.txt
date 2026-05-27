@@ -1,0 +1,7 @@
+fastapi>=0.115
+uvicorn[standard]>=0.32
+GitPython>=3.1
+openai>=1.55
+langchain>=0.3
+chromadb>=0.5
+psycopg[binary]>=3.2
