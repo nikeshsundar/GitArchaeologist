@@ -146,6 +146,71 @@ button {
   align-content: start;
 }
 
+.tabs {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tab {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 900;
+  color: var(--muted);
+}
+
+.tab.is-active {
+  border-color: #b8dcd4;
+  color: var(--accent-dark);
+  background: #eef9f6;
+}
+
+.tab-view {
+  display: none;
+  gap: 18px;
+}
+
+.tab-view.is-active {
+  display: grid;
+}
+
+.inline-form {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  flex-wrap: wrap;
+}
+
+label.inline {
+  min-width: 220px;
+}
+
+.hint {
+  color: var(--muted);
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.small {
+  padding: 10px 12px;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+}
+
+.list-item {
+  border: 1px solid var(--line);
+  padding: 12px;
+  border-radius: 8px;
+  background: #fbfcfc;
+}
+
 .status {
   color: var(--muted);
   min-height: 22px;

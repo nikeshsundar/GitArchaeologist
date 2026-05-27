@@ -40,6 +40,17 @@
       <section class="workspace" aria-live="polite">
         <div id="status" class="status">Paste a public GitHub repo and a symbol to begin.</div>
 
+        <nav class="tabs" aria-label="Mode">
+          <button class="tab is-active" type="button" data-tab="analyze">Analyze</button>
+          <button class="tab" type="button" data-tab="onboarding">Onboarding</button>
+          <button class="tab" type="button" data-tab="health">Health</button>
+          <button class="tab" type="button" data-tab="time">Time Machine</button>
+          <button class="tab" type="button" data-tab="story">Repo Story</button>
+          <button class="tab" type="button" data-tab="graph">Knowledge Graph</button>
+          <button class="tab" type="button" data-tab="external">Add Context</button>
+        </nav>
+
+        <section class="tab-view is-active" data-view="analyze">
         <section class="summary-band">
           <div>
             <span class="eyebrow">AI Summary</span>
@@ -85,6 +96,158 @@
           <h2>Evidence</h2>
           <div id="matches" class="matches empty">No source matches loaded.</div>
         </article>
+        </section>
+
+        <section class="tab-view" data-view="onboarding">
+          <article class="panel">
+            <h2>AI Onboarding Mode</h2>
+            <div class="inline-form">
+              <label class="inline">
+                Topic
+                <input id="onboarding-topic" placeholder="authentication" autocomplete="off" />
+              </label>
+              <button class="primary small" type="button" id="run-onboarding">Generate</button>
+            </div>
+            <p class="hint">Grounded in grep matches and commit history.</p>
+          </article>
+          <div class="grid two">
+            <article class="panel">
+              <h2>Important Files</h2>
+              <div id="onboarding-files" class="list empty">No onboarding report yet.</div>
+            </article>
+            <article class="panel">
+              <h2>Key Contributors</h2>
+              <div id="onboarding-people" class="contributors empty">No onboarding report yet.</div>
+            </article>
+          </div>
+          <div class="grid two">
+            <article class="panel">
+              <h2>Recent Decisions</h2>
+              <div id="onboarding-decisions" class="timeline empty">No onboarding report yet.</div>
+            </article>
+            <article class="panel">
+              <h2>Evidence</h2>
+              <div id="onboarding-evidence" class="matches empty">No onboarding report yet.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-view" data-view="health">
+          <section class="summary-band">
+            <div>
+              <span class="eyebrow">Repository Health</span>
+              <p id="health-summary">Run a repo analysis to see health signals.</p>
+            </div>
+            <div class="risk-meter">
+              <span>Score</span>
+              <strong id="health-score">--</strong>
+            </div>
+          </section>
+          <div class="grid two">
+            <article class="panel">
+              <h2>High-Risk Files (6 months)</h2>
+              <div id="health-hotspots" class="list empty">No health report yet.</div>
+            </article>
+            <article class="panel">
+              <h2>Bus Factor</h2>
+              <div id="health-bus" class="risk-list empty">No health report yet.</div>
+            </article>
+          </div>
+          <article class="panel">
+            <h2>Abandoned Modules (12 months)</h2>
+            <div id="health-abandoned" class="list empty">No health report yet.</div>
+          </article>
+        </section>
+
+        <section class="tab-view" data-view="time">
+          <article class="panel">
+            <h2>Time Machine</h2>
+            <div class="inline-form">
+              <label class="inline">
+                Ref (commit/branch/tag)
+                <input id="snapshot-ref" placeholder="HEAD~100" autocomplete="off" />
+              </label>
+              <button class="primary small" type="button" id="run-snapshot">Snapshot</button>
+            </div>
+            <p class="hint">Shows the folder shape and sample files at that ref.</p>
+          </article>
+          <div class="grid two">
+            <article class="panel">
+              <h2>Top Directories</h2>
+              <div id="snapshot-dirs" class="list empty">No snapshot yet.</div>
+            </article>
+            <article class="panel">
+              <h2>Sample Files</h2>
+              <div id="snapshot-files" class="list empty">No snapshot yet.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-view" data-view="story">
+          <article class="panel">
+            <h2>Repository Story</h2>
+            <p class="hint">A documentary-style overview from Git history.</p>
+          </article>
+          <div class="grid two">
+            <article class="panel">
+              <h2>Started</h2>
+              <div id="story-start" class="created empty">No story loaded.</div>
+            </article>
+            <article class="panel">
+              <h2>Top Contributors</h2>
+              <div id="story-people" class="list empty">No story loaded.</div>
+            </article>
+          </div>
+          <div class="grid two">
+            <article class="panel">
+              <h2>Commits By Year</h2>
+              <div id="story-years" class="list empty">No story loaded.</div>
+            </article>
+            <article class="panel">
+              <h2>Biggest Rewrites</h2>
+              <div id="story-rewrites" class="timeline empty">No story loaded.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-view" data-view="graph">
+          <article class="panel">
+            <h2>Knowledge Graph</h2>
+            <p class="hint">A lightweight graph connecting commits, discussions, and external context to the code topic.</p>
+          </article>
+          <div class="grid two">
+            <article class="panel">
+              <h2>Nodes</h2>
+              <div id="graph-nodes" class="list empty">No graph loaded.</div>
+            </article>
+            <article class="panel">
+              <h2>Edges</h2>
+              <div id="graph-edges" class="list empty">No graph loaded.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-view" data-view="external">
+          <article class="panel">
+            <h2>Add External Context</h2>
+            <div class="inline-form">
+              <label class="inline">
+                Type
+                <input id="external-type" placeholder="notion|slack|jira|doc|meeting" autocomplete="off" />
+              </label>
+              <label class="inline">
+                Title
+                <input id="external-title" placeholder="Decision: pricing model change" autocomplete="off" />
+              </label>
+              <button class="primary small" type="button" id="add-external">Attach</button>
+            </div>
+            <label>
+              Text
+              <textarea id="external-text" rows="6" placeholder="Paste a snippet from a meeting transcript, a Jira ticket, or a Notion doc."></textarea>
+            </label>
+            <p class="hint">Stored locally under the cloned repo in `.ga/sources.jsonl` and used by Knowledge Graph.</p>
+          </article>
+        </section>
       </section>
     </main>
 
