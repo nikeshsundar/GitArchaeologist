@@ -8,8 +8,6 @@ A runnable prototype for asking why code exists by combining source search, comm
 python server.py
 ```
 
-Open `http://127.0.0.1:8000`.
-
 ## What works now
 
 - Paste a public GitHub repository URL.
